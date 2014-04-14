@@ -15,4 +15,4 @@ The system is trained with Brown Corpus which has over one million tokens.
 > [('said',0.9902),('aids',0.0049),('maids',0.0049)]
 
 
-For further information and complete analysis of system: [Implementation Details](https://github.com/cornetto/SpellChecker/wiki/Implementation-Details)  
+For further information and complete analysis of proposed method: [Implementation Details](https://github.com/cornetto/SpellChecker/wiki/Implementation-Details)  
