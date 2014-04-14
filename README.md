@@ -2,7 +2,7 @@
 
 In this spell checker, the main idea is based on taking a word and creating possible variations of the word by deleting, inserting, transposing or replacing letters. After creating variations, their existence are checked at Brown corpus and their occurrences are weighted according to their distance to the original word. With this idea, if the original word is found on corpus without any modification, its probability is increased. On the other hand, as the distance from the original word increases, probability of seeing modified word is decreased.
 
-While increasing and decreasing probabilities, numbers taken from [[1]]( htt p://w w w.sc ienc e direc t.co m/sc ienc e/artic le/pii/S016 79236 0200115X  ) is used. According to this paper where typing experiments are undertaken, probability of 1-edit-away is calculated as 94% and 2-edit-away is 5% and 3-edit-away is 1%. Using these percentages, counts of the created words are multiplied as following:
+While increasing and decreasing probabilities, numbers taken from [[1]](http://www.sciencedirect.com/science/article/pii/S016792360200115X) is used. According to this paper where typing experiments are undertaken, probability of 1-edit-away is calculated as 94% and 2-edit-away is 5% and 3-edit-away is 1%. Using these percentages, counts of the created words are multiplied as following:
 
 ![](https://github.com/cornetto/SpellChecker/blob/master/wiki/table-1.png?raw=true)
 
