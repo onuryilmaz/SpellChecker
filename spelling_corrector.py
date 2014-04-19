@@ -1,6 +1,13 @@
-# Onur Yilmaz
+"""
+.. module:: spelling_corrector
+   :platform: Unix, Windows
+   :synopsis: Spelling checker for English
 
-# Imports
+.. moduleauthor:: Onur Yılmaz <mail@onuryilmaz.me>
+
+
+"""
+
 import re, collections
 import nltk
 import string
