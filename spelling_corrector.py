@@ -87,33 +87,50 @@ def edits2(word):
    """ 
    return set(two_away for one_away in edits1(word) for two_away in edits1(one_away))
 
-# Function for words that are 1-away in distance
-# Input:    Complete list of 1-away distant words
-# Return:   Set of words that are already occurring in corpus
-# Count of 1-away words is multiplied with "weight_1away" and
-# count of original word is multiplied with "weight_0away"  
-def found_1away_not_sorted(word):
-    temp2 = dict([(x, NWORDS.get(x)*weight_1away) for x in edits1(word) if x in NWORDS])
-    if word in NWORDS and word in temp2.keys():
-        temp2[word] = temp2[word] * weight_0away
-    return temp2
 
-# Function for words that are 2-away in distance
-# Input:    Complete list of 2-away distant words
-# Return:   Set of words that are already occurring in corpus
-# Count of 2-away words is multiplied with "weight_2away" and
-# count of original word is multiplied with "weight_0away"
+def found_1away_not_sorted(word):
+   """Function for words that are 1-away in distance
+   
+   :param word: Complete list of 1-away distant words
+   :type word: str.
+   :returns:  set -- Set of words that are already occurring in corpus
+   
+   """ 
+   
+   # Count of 1-away words is multiplied with "weight_1away" and
+   temp2 = dict([(x, NWORDS.get(x)*weight_1away) for x in edits1(word) if x in NWORDS])
+   if word in NWORDS and word in temp2.keys():
+      # count of original word is multiplied with "weight_0away"  
+      temp2[word] = temp2[word] * weight_0away
+   return temp2
+
 def found_2away_not_sorted(word):
-    temp2 = dict([(x, NWORDS.get(x)*weight_2away) for x in edits2(word) if x in NWORDS])
-    if word in NWORDS and word in temp2.keys():
-        temp2[word] = temp2[word] * weight_0away
-    return temp2
+   """Function for words that are 2-away in distance
+   
+   :param word: 2-away words is multiplied with "weight_2away" and
+   :type word: str.
+   :returns:  set -- Set of words that are already occurring in corpus
+   
+   """ 
+   temp2 = dict([(x, NWORDS.get(x)*weight_2away) for x in edits2(word) if x in NWORDS])
+      # Count of 2-away words is multiplied with "weight_2away"
+      if word in NWORDS and word in temp2.keys():
+            # Count of 2-away words is multiplied with "weight_2away"
+            temp2[word] = temp2[word] * weight_0away
+   return temp2
 
 # Function for words that are 3-away in distance
 # Return:   Set of words that are already occurring in corpus, sorted according to their counts
 # Count of 3-away words is multiplied with "weight_3away" and
 # count of original word is multiplied with "weight_0away"  
 def found_3away_with_numbers(word):
+   """Function for words that are 2-away in distance
+   
+   :param word: 2-away words is multiplied with "weight_2away" and
+   :type word: str.
+   :returns:  set -- Set of words that are already occurring in corpus
+   
+   """ 
     temp1 = [three_away for two_away in edits2(word) for three_away in edits1(two_away)]
     temp2 = [x for x in temp1 if x in NWORDS]
     temp3 = dict([(x, NWORDS.get(x)*weight_3away) for x in temp2]) 
