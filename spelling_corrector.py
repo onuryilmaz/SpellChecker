@@ -5,7 +5,6 @@
 
 .. moduleauthor:: Onur Yılmaz <mail@onuryilmaz.me>
 
-
 """
 
 import re, collections
@@ -14,10 +13,24 @@ import string
 from nltk.corpus import brown
 import operator
 
-def words(text): return re.findall('[a-z]+', text.lower()) 
+def words(text): 
+   """This function returns all the words in text in lowercase.
 
-# Training function which adds 1 if not exists
+   :param text: The text of which words will be extracted.
+   :type text: str.
+   :returns:  str -- the return code.
+
+    """   
+   return re.findall('[a-z]+', text.lower()) 
+
 def train(features):
+   """Training function which adds 1 to all features in case of 0
+
+   :param features: The text of which words will be extracted.
+   :type features: feature vector.
+   :returns:  collections.defaultdict -- dictionary instance.
+   
+   """ 
     model = collections.defaultdict(lambda: 1)
     for f in features:
         model[f] += 1
@@ -42,8 +55,15 @@ weight_1away = 95
 weight_2away = 4
 weight_3away = 1
 
-# 1-away edit function, gathered from the file in COW
+
 def edits1(word):
+   """1-away edit function
+   
+   :param word: Original word where 1 distance level will be constructed according to
+   :type word: str.
+   :returns:  set -- set of words in 1-distance
+   
+   """ 
     # Split for helper
    splits     = [(word[:i], word[i:]) for i in range(len(word) + 1)]
     # Deleting a letter
@@ -57,9 +77,15 @@ def edits1(word):
     # Return complete set
    return set(deletes + transposes + replaces + inserts)
 
-# 2-away edit function, it uses 1-away edit function twice
 def edits2(word):
-    return set(two_away for one_away in edits1(word) for two_away in edits1(one_away))
+   """2-away edit function
+   
+   :param word: Original word where 2 distance level will be constructed according to
+   :type word: str.
+   :returns:  set -- set of words in 2-distance
+   
+   """ 
+   return set(two_away for one_away in edits1(word) for two_away in edits1(one_away))
 
 # Function for words that are 1-away in distance
 # Input:    Complete list of 1-away distant words
